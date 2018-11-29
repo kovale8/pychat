@@ -5,7 +5,7 @@ user = os.environ.get('CLOUD_SQL_USERNAME')
 password = os.environ.get('CLOUD_SQL_PASSWORD')
 host = os.environ.get('CLOUD_SQL_HOST')
 name = os.environ.get('CLOUD_SQL_DATABASE_NAME')
-connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
+connection_name = 'assignment04-223519:us-east1:chatdb'
 
 
 # When deployed to App Engine, the `GAE_ENV` environment variable will be

@@ -2,3 +2,5 @@
 venv
 .gcloudignore
 __pycache__
+start
+cloud_sql_proxy

@@ -1,15 +1,28 @@
+const api = {
+    sendMessage(text) {
+        fetch('/send', {
+            method: 'POST',
+            body: JSON.stringify({message: text}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
+};
+
 const messages = document.querySelector('#messages');
 const input = document.querySelector('#input_bar input');
 
 function sendMessage() {
     const message = input.value;
-    input.value = '';
+    api.sendMessage(message);
 
     const messageBlock = document.createElement('div');
     messageBlock.className = 'message';
     messageBlock.innerHTML = message;
 
     messages.appendChild(messageBlock);
+    input.value = '';
 }
 
 

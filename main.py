@@ -2,11 +2,6 @@ from flask import Flask, render_template, request, Response
 import messenger
 import ptvsd
 
-try:
-    ptvsd.enable_attach(address=('0.0.0.0', 5678))
-except:
-    pass
-
 app = Flask(__name__)
 
 @app.route('/')

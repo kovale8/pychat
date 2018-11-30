@@ -1,10 +1,10 @@
 from db import query
 
 def getMessages():
-    query('''
+    return query('''
         SELECT text
         FROM messages
-        ORDER BY date_created DESC
+        ORDER BY date_created ASC
     ''')
 
 def saveMessage(text):

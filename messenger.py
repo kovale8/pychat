@@ -14,4 +14,7 @@ def getMessages():
     ''')
 
 def saveMessage(text):
-    query('INSERT INTO messages (text) VALUES (%s)', (text,))
+    language = translate_client.detect_language(text)['language']
+    query('''
+        INSERT INTO messages (text, language) VALUES (%s, %s)
+    ''', (text, language))

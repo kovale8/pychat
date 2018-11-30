@@ -1,7 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <section id='messages'></section>
+    <section id='messages'>
+        {% for message in messages %}
+            <div class='message'>{{ message.text }}</div>
+        {% endfor %}
+    </section>
     <section id='input_bar'>
         <input type='text'></input>
     </section>

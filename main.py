@@ -1,16 +1,24 @@
 from flask import Flask, render_template, request, Response
-from messenger import saveMessage
+import messenger
+import ptvsd
 
+try:
+    ptvsd.enable_attach(address=('0.0.0.0', 5678))
+except:
+    pass
 
 app = Flask(__name__)
 
 @app.route('/')
 def root():
-    return render_template('root.html')
+    breakpoint()
+    messages = messenger.getMessages()
+    print(messages)
+    return render_template('root.html', messages=messages)
 
 @app.route('/send', methods = ['POST'])
 def send():
-    saveMessage(request.get_json()['message'])
+    messenger.saveMessage(request.get_json()['message'])
     return Response(status=202)
 
 

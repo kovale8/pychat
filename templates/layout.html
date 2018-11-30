@@ -9,9 +9,15 @@
   </head>
   <body>
     <header>
-        <img class='logo'
+        <img class="logo"
           src="{{ url_for('static', filename='img/logo.png') }}">
         <h1>PyChat</h1>
+        <select id="language-select">
+          <option value=''>Original Languages</option>
+          {% for lang in languages %}
+            <option value="{{ lang.language }}">{{lang.name}}</option>
+          {% endfor %}
+        </select>
     </header>
     <main>
       {% block body %}

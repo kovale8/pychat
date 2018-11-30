@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, jsonify
 import messenger
 import ptvsd
 
@@ -6,10 +6,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    breakpoint()
     messages = messenger.getMessages()
-    print(messages)
-    return render_template('root.html', messages=messages)
+    languages = messenger.getLanguages()
+    return render_template('root.html',
+        messages=messages,
+        languages=languages
+    )
 
 @app.route('/send', methods = ['POST'])
 def send():

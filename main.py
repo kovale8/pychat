@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, Response, jsonify
 import messenger
-import ptvsd
 
 app = Flask(__name__)
 

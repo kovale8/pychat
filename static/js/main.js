@@ -10,6 +10,7 @@ const api = {
     }
 };
 
+const langSelect = document.querySelector('#language-select');
 const messages = document.querySelector('#messages');
 const input = document.querySelector('#input_bar input');
 
@@ -25,6 +26,12 @@ function sendMessage() {
     input.value = '';
 }
 
+function setLangSelection() {
+    const url = new URL(window.location.href);
+    const lang = url.searchParams.get('lang');
+    if (lang)
+        langSelect.value = lang;
+}
 
 document.addEventListener('keydown', event => {
     switch (event.key) {
@@ -36,3 +43,19 @@ document.addEventListener('keydown', event => {
     }
     event.preventDefault();
 });
+
+langSelect.addEventListener('change', () => {
+    const lang = langSelect.value;
+    const loc = window.location;
+    const origin = loc.origin;
+
+    if (!lang)
+        loc.replace(origin);
+    else {
+        const url = new URL(origin);
+        url.searchParams.set('lang', lang);
+        loc.replace(url.href);
+    }
+});
+
+setLangSelection();

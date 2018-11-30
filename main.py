@@ -13,8 +13,6 @@ def root():
     else:
         messages = messenger.getMessagesTranslated(lang)
 
-    print(messages)
-
     return render_template('root.html',
         messages=messages,
         languages=messenger.getLanguages()

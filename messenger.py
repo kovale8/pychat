@@ -7,11 +7,27 @@ def getLanguages():
     return translate_client.get_languages()
 
 def getMessages():
-    return query('''
+    m = query('''
         SELECT text
         FROM messages
         ORDER BY date_created ASC
     ''')
+    x = []
+    for i in m:
+        x.append(i[0])
+    return x
+
+def getMessagesTranslated(lang):
+    messages = getMessages()
+    messages = translate_client.translate(
+        messages,
+        target_language=lang
+    )
+    translatedMessages = []
+    for m in messages:
+        translatedMessages.append(m['translatedText'])
+    print(translatedMessages)
+    return translatedMessages
 
 def saveMessage(text):
     language = translate_client.detect_language(text)['language']

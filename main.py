@@ -6,11 +6,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    messages = messenger.getMessages()
-    languages = messenger.getLanguages()
+    lang = request.args.get('lang')
+
+    if lang is None:
+        messages = messenger.getMessages()
+    else:
+        messages = messenger.getMessagesTranslated(lang)
+
+    print(messages)
+
     return render_template('root.html',
         messages=messages,
-        languages=languages
+        languages=messenger.getLanguages()
     )
 
 @app.route('/send', methods = ['POST'])

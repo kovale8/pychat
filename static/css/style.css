@@ -29,6 +29,10 @@ main {
     margin-bottom: 2em;
 }
 
+#language-select {
+    margin-left: 3em;
+}
+
 .message {
     margin: 1em;
     padding: 1em;

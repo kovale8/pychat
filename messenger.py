@@ -26,7 +26,6 @@ def getMessagesTranslated(lang):
     translatedMessages = []
     for m in messages:
         translatedMessages.append(m['translatedText'])
-    print(translatedMessages)
     return translatedMessages
 
 def saveMessage(text):
